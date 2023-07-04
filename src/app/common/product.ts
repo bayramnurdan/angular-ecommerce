@@ -7,6 +7,5 @@ export class Product {
         public quantity: number,
         public price: number,
         public discount: number,
-        public imageUrl: string,
-        public categories: Category[]){};
+        public imageUrl: string){};
 }

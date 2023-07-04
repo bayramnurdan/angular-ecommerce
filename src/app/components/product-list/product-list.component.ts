@@ -10,27 +10,35 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
-  categorizedProducts : Product[] = [];
+  currentCategoryName: string = "";
+  
   constructor(private productService:ProductService,
               private route: ActivatedRoute ){}
 
   ngOnInit(): void {
+  this.route.params.subscribe(() => {
     this.listProducts();
-      
+  });
   }
+
   listProducts(){
+    const hasCategoryName: boolean = this.route.snapshot.paramMap.has('name')
+    if (hasCategoryName){
+      this.currentCategoryName = this.route.snapshot.paramMap.get('name')!;
+
+      this.productService.getProductsByCategory(this.currentCategoryName).subscribe(
+        data => {
+          this.products = data;
+        }
+      )
+    }
+
     this.productService.getProductList().subscribe(
     data => {
       this.products = data;
     }
     )
   }
-  listProductsByCategory(categoryName: string){
-    this.productService.getProductsByCategory(categoryName).subscribe(
-      data=>{
-        this.categorizedProducts = data;
-      }
-    )
-  }
+ 
 
 }
