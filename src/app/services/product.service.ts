@@ -11,11 +11,14 @@ import { map } from 'rxjs/operators' ;
 export class ProductService {
   private baseUrl = "http://localhost:8080/api/products";
 
+
   constructor(private httpClient: HttpClient ) { }
 
   getProductList(): Observable<Product[]>{
     return this.httpClient.get<Product[]>(this.baseUrl);
-
+  }
+  getProductsByCategory(categoryName: string): Observable<Product[]>{
+    return this.httpClient.get<Product[]>(this.baseUrl + "/category/"+ categoryName);
   }
 }
 
