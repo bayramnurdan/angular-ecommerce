@@ -1,7 +1,8 @@
 import { Category } from "./category";
 
 export class Product {
-    constructor(public name: string,
+    constructor(public id: number,
+        public name: string,
         public brandName: string,
         public description: string,
         public quantity: number,

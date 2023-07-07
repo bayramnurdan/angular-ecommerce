@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators' ;
   providedIn: 'root'
 })
 export class ProductService {
+ 
   private baseUrl = "http://localhost:8080/api/products";
 
 
@@ -22,6 +23,9 @@ export class ProductService {
   }
   searchProducts(keyword: string){
     return this.httpClient.get<Product[]>(this.baseUrl + "/name/" + keyword);
+  }
+  getProduct(productId: number) {
+    return this.httpClient.get<Product>(`${this.baseUrl}/${productId}`);
   }
 }
 
