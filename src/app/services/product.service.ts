@@ -20,5 +20,8 @@ export class ProductService {
   getProductsByCategory(categoryName: string): Observable<Product[]>{
     return this.httpClient.get<Product[]>(this.baseUrl + "/category/"+ categoryName);
   }
+  searchProducts(keyword: string){
+    return this.httpClient.get<Product[]>(this.baseUrl + "/name/" + keyword);
+  }
 }
 

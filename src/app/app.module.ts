@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services/product.service';
 import { CategoryListComponent } from './components/category-list/category-list.component';
 import { Routes, RouterModule } from '@angular/router';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
     AppComponent,
     ProductListComponent,
     CategoryListComponent,
+    SearchComponent,
 
   ],
   imports: [
